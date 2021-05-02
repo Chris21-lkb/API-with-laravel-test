@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\NameController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,4 +28,6 @@ Route::prefix('data')->group(function(){
 
     Route::delete('delete/{id}',[DeviceController::class,'delete']);
     Route::get('read',[DeviceController::class,'read']);
+    Route::put('updatedb2',[DeviceController::class,'updatedb2']);
+    Route::delete('deletedb2/{id}',[DeviceController::class,'deletedb2']);
 });

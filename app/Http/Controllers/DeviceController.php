@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Device;
 use Illuminate\Http\Request;
+use App\Models\Name;
 
 class DeviceController extends Controller
 {
@@ -46,7 +47,31 @@ class DeviceController extends Controller
     }
 
     function read(){
-        return $device = Device::all();
+        return $device = Name::all();
+    }
+
+    function updatedb2(Request $req){
+        $name = Name::find($req -> id);
+        $name -> name = $req -> name;
+        $name -> email = $req -> email;
+        $result = $name -> save();
+
+        if($result){
+            return ["Result"=>"Data have been updated"];
+        }else{
+            return ["Result"=>"Operation has failed, Please try again later"];
+        }
+    }
+
+    function deletedb2($id){
+        $name = Name::find($id);
+        if($name){
+            $name -> delete();
+            return ["Result"=>"data has been deleted"];
+        }
+        else{
+            return ["Result"=>"Data has not been found"];
+        }
     }
 
     function find($name){

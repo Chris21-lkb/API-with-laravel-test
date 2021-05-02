@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Name extends Model
 {
     use HasFactory;
+
+    public $connection = "mysql2";
+
 }
