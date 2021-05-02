@@ -18,12 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('read',[DeviceController::class,'read']);
+Route::prefix('data')->group(function(){
+    Route::get('find/{name}',[DeviceController::class,'find']);
+    Route::post('save',[DeviceController::class,'index']);
 
-Route::get('find/{name}',[DeviceController::class,'find']);
+    Route::put('update',[DeviceController::class,'update']);
 
-Route::post('save',[DeviceController::class,'index']);
-
-Route::put('update',[DeviceController::class,'update']);
-
-Route::delete('delete/{id}',[DeviceController::class,'delete']);
+    Route::delete('delete/{id}',[DeviceController::class,'delete']);
+    Route::get('read',[DeviceController::class,'read']);
+});
